@@ -64,3 +64,12 @@ CREATE TABLE IF NOT EXISTS vote (
   FOREIGN KEY (candidate_id) REFERENCES candidate(candidate_id)
 );
 
+CREATE INDEX idx_county_state ON county(state_code);
+CREATE INDEX idx_precinct_county ON precinct(county_id);
+CREATE INDEX idx_vote_precinct ON vote(precinct_id);
+CREATE INDEX idx_vote_contest ON vote(contest_id);
+CREATE INDEX idx_vote_candidate ON vote(candidate_id);
+CREATE UNIQUE INDEX idx_party_code ON party(code);
+CREATE INDEX idx_contest_lookup ON contest(election_id, office, district);
+
+
